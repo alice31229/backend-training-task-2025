@@ -60,6 +60,11 @@ if (BobPrice >= giftPriceRule || BobIsVip == true) {
 
 console.log(`贈品還剩下${giftNum}個`);
 
+/*
+BobIsVip 不需要 == true ，因為 BobIsVip 這個變數本身就是布林值，所以可直接當成一個條件放入 if 條件式做判斷。
+giftNum 可以使用 -- 。
+*/
+
 // ### 題目四：
 // 健身房的業績獎金計算
 // 會計官想寫一個程式，來計算教練的業績獎金，以下為條件值
@@ -84,6 +89,11 @@ if (coachIncome <= 100000){
 }
 console.log(`小明總共需支付 $${coachBonus} 獎金`);
 
+/*
+coachIncome > 100000 && coachIncome <= 300000 中的 coachIncome > 100000 不需要填寫，因為前方的判斷式已經處理這部份了。
+*/
+
+
 // ### 題目五：剪刀石頭布
 // 請寫程式來判斷剪刀石頭布的輸贏
 // 宣告兩個變數，一個是 playerA 另一個是 playerB
@@ -99,6 +109,12 @@ if ((playerA === '剪刀' && playerB === '剪刀') || (playerA === '石頭' && p
   console.log('B贏');
 }
 // 練習：使用 if, else if, else 判斷輸贏
+
+/*
+playerA === "剪刀" && playerB === "剪刀” …(平手的部分) 這邊因為邏輯會是兩個相等，所以可以用 playerA === playerB 的方式簡化程式碼。
+平手與勝利條件完成後，就可以用 else 把剩下輸的條件直接框起來，不用再每一條羅列出來。
+*/
+
 
 // ### 題目六：陣列、物件變數定義
 // 這是一間位於高雄市的健身房，名為「高雄市健身教練聯盟」，專注於提供高品質的健身指導服務。健身房內有多位專業教練，以下是兩位教練的詳細介紹：
@@ -222,7 +238,7 @@ const activities = {
 let calorieBurn = 0;
 
 // 練習：計算小明今日消耗的卡路里
-calorieBurn = 10 * activities['running']['calories'] + 30 * activities['yoga']['calories'] + 10 * activities['biking']['calories'];
+calorieBurn = 30 * activities['running']['calories'] + 40 * activities['yoga']['calories'] + 20 * activities['biking']['calories'];
 
 console.log(`小明今日一共消耗約 ${calorieBurn} 卡路里。`);
 
@@ -273,3 +289,7 @@ if (validDays >= 5 || totalDuration >= 150){
 }
 
 console.log(`小明的運動量是否達標: ${isCompliant}`); // 輸出: 小明的運動量是否達標
+
+/*
+可以使用 validDays ++; 代替 validDays += 1; 。
+*/
