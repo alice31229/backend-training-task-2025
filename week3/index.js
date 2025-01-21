@@ -32,7 +32,7 @@ const members = ["Alice", "Bob", "Charlie", "Diana", "Evan", "Fiona", "George", 
 
 let purchaseRecords = [];
 function addPurchaseRecord(name, purchases){
-    if (typeof name == 'string' && typeof purchases == 'number'){
+    if (name != '' && name != undefined && typeof name == 'string' && typeof purchases == 'number' && purchases > 0){
         let purchaseRecord = {
             'name': '',
             'courses': 0,
