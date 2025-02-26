@@ -185,10 +185,10 @@ const requestListener = async (req, res) => {
           res.end()
           return
         }
-        const newSkill = await creditSkill.create({
+        const newSkill = await skillRepo.create({
           name: data.name
         })
-        const result = await creditSkill.save(newSkill)
+        const result = await skillRepo.save(newSkill)
         res.writeHead(200, headers)
         res.write(JSON.stringify({
           status: "success",
