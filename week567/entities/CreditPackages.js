@@ -16,9 +16,8 @@ module.exports = new EntitySchema({
       nullable: false,
       unique: true
     },
-    creditAmount: {
+    credit_amount: {
       type: 'integer',
-      name: 'credit_amount',
       nullable: false
     },
     price: {

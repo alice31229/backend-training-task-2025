@@ -6,9 +6,11 @@ const pinoHttp = require('pino-http')
 const logger = require('./utils/logger')('App')
 const creditPackageRouter = require('./routes/creditPackage')
 const skillRouter = require('./routes/skill')
-const courseRouter = require('./routes/course')
-const userRouter = require('./routes/user')
-const coachRouter = require('./routes/coach')
+const usersRouter = require('./routes/users')
+const adminRouter = require('./routes/admin')
+const coachRouter = require('./routes/coaches')
+const coursesRouter = require('./routes/courses')
+const uploadRouter = require('./routes/upload')
 
 const app = express()
 app.use(cors())
@@ -30,14 +32,23 @@ app.get('/healthcheck', (req, res) => {
   res.send('OK')
 })
 app.use('/api/credit-package', creditPackageRouter)
-app.use('/api/coaches/skills', skillRouter)
-app.use('/api/', coachRouter)
-app.use('/api/', userRouter)
-app.use('/api/', courseRouter)
+app.use('/api/coaches/skill', skillRouter)
+app.use('/api/users', usersRouter)
+app.use('/api/admin', adminRouter)
+app.use('/api/coaches', coachRouter)
+app.use('/api/courses', coursesRouter)
+app.use('/api/upload', uploadRouter)
 
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   req.log.error(err)
+  if (err.status) {
+    res.status(err.status).json({
+      status: 'failed',
+      message: err.message
+    })
+    return
+  }
   res.status(500).json({
     status: 'error',
     message: '伺服器錯誤'

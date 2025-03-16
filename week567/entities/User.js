@@ -7,8 +7,7 @@ module.exports = new EntitySchema({
     id: {
       primary: true,
       type: 'uuid',
-      generated: 'uuid',
-      nullable: false
+      generated: 'uuid'
     },
     name: {
       type: 'varchar',
@@ -18,28 +17,29 @@ module.exports = new EntitySchema({
     email: {
       type: 'varchar',
       length: 320,
-      nullable: false
+      nullable: false,
+      unique: true
     },
     role: {
-        type: 'varchar',
-        length: 20,
-        nullable: false
+      type: 'varchar',
+      length: 20,
+      nullable: false
     },
     password: {
       type: 'varchar',
       length: 72,
-      nullable: false
+      nullable: false,
+      select: false
     },
-    createdAt: {
+    created_at: {
       type: 'timestamp',
       createDate: true,
-      name: 'created_at',
       nullable: false
     },
-    updatedAt: {
-        type: 'timestamp',
-        name: 'updated_at',
-        nullable: false
+    updated_at: {
+      type: 'timestamp',
+      updateDate: true,
+      nullable: false
     }
   }
 })

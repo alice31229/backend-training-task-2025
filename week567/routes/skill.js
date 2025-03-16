@@ -1,17 +1,12 @@
 const express = require('express')
 
 const router = express.Router()
-const { dataSource } = require('../db/data-source')
-const logger = require('../utils/logger')('Skill')
+const skill = require('../controllers/skill')
 
-router.get('/', async (req, res, next) => {
+router.get('/', skill.getAll)
 
-})
+router.post('/', skill.post)
 
-router.post('/', async (req, res, next) => {
-})
-
-router.delete('/:skillId', async (req, res, next) => {
-})
+router.delete('/:skillId', skill.deletePackage)
 
 module.exports = router
